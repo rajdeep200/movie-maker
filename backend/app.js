@@ -1,11 +1,18 @@
 const express = require("express");
+const cors = require("cors");
+const connectdb = require("./config/db");
+const bodyParser = require("body-parser");
+const movieRoutes = require("./router/movies");
+require("dotenv").config();
+connectdb();
 
-const app = express();
+const app = express()
 
-app.get("/", (req,res) => {
-    res.send("hello");
-})
+//Routes
+app.use("/movies", movieRoutes);
 
-const port = 5000;
+app.use(bodyParser.json({ limit:"30mb", extended:true }))
+app.use(bodyParser.urlencoded({ limit:"30mb", extended:true }))
+app.use(cors());
 
-app.listen(port, () => console.log(`server running on port ${port}`));
+app.listen(process.env.PORT, () => console.log(`server running on ${process.env.PORT}`))
