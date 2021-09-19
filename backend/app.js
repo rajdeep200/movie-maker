@@ -7,12 +7,13 @@ require("dotenv").config();
 connectdb();
 
 const app = express()
+app.use(express.json())
+
+// app.use(bodyParser.json({ limit:"30mb", extended:true }))
+// app.use(bodyParser.urlencoded({ limit:"30mb", extended:true }))
+app.use(cors());
 
 //Routes
-app.use("/movies", movieRoutes);
-
-app.use(bodyParser.json({ limit:"30mb", extended:true }))
-app.use(bodyParser.urlencoded({ limit:"30mb", extended:true }))
-app.use(cors());
+app.use("/games", movieRoutes);
 
 app.listen(process.env.PORT, () => console.log(`server running on ${process.env.PORT}`))

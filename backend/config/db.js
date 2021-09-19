@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const grid = require("gridfs-stream");
 require("dotenv").config();
 
 const connectdb = async () => {

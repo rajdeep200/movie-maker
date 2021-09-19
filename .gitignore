@@ -8,6 +8,8 @@
 /my-app//yarn.lock
 /my-app/yarn.lock
 /backend/package-lock.json
+/backend/.env
+node_modules
 
 # testing
 /coverage
