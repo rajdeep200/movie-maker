@@ -3,6 +3,7 @@ const cors = require("cors");
 const connectdb = require("./config/db");
 const bodyParser = require("body-parser");
 const movieRoutes = require("./router/movies");
+const userRoutes = require("./router/userRouter")
 require("dotenv").config();
 connectdb();
 
@@ -15,5 +16,6 @@ app.use(cors());
 
 //Routes
 app.use("/games", movieRoutes);
+app.use("/user", userRoutes);
 
 app.listen(process.env.PORT, () => console.log(`server running on ${process.env.PORT}`))
