@@ -3,17 +3,15 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema({
     userId:{
-        type: String,
-        required: true
+        type: String
     },
     password:{
-        type: String,
-        required: true
+        type: String
     }
 })
 
 userSchema.methods.matchPassword = async function(enteredPassword){
-    return bcrypt.compare(this.password, enteredPassword)
+    return await bcrypt.compare(enteredPassword, this.password)
 }
 
 userSchema.pre("save", async function(){

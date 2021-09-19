@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
+import { getUser } from "../redux/userSlice";
 
 const useStyles = makeStyles( theme => ({
     container:{
@@ -47,21 +49,37 @@ const useStyles = makeStyles( theme => ({
     }
 }))
 
-const LoginPage = () => {
+const LoginPage = ({history}) => {
     const classes = useStyles();
-    const [id, setId] = useState("");
+    const dispatch = useDispatch();
+    const {user} = useSelector(state => state.user)
+    const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
+    const data = {
+        userId,
+        password
+    }
+
+    const handleSubmit = () => {
+        dispatch(getUser(data));
+    }
+
+    useEffect(() => {
+        if(user){
+            history.push("/admin")
+        }
+    }, [history,user])
 
     return (
         <div className={classes.container} >
             <div className={classes.input}>
-            <input type="text" className={classes.userId} placeholder="Enter userID..." value={id} onChange={(e) => setId(e.target.value) } />
+            <input type="text" className={classes.userId} placeholder="Enter userID..." value={userId} onChange={(e) => setUserId(e.target.value) } />
             </div> <br />
             <div className={classes.input}>
             <input type="password" className={classes.password} placeholder="Enter password..." value={password} onChange={(e) => setPassword(e.target.value) } />
             </div> <br />
             <div className={classes.input}>
-            <button type="submit" className={classes.button} >Login</button>
+            <button type="submit" className={classes.button} onClick={handleSubmit} >Login</button>
             </div>
         </div>
     )

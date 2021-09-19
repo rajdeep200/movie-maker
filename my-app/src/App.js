@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme } from "@material-ui/core";
 import "./App.css";
 import FormPage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
 
 const theme = createTheme({
   breakpoints: {
@@ -21,6 +22,7 @@ function App() {
       <Router>
         <Route exact path="/" component={FormPage} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/admin" component={AdminPage} />
       </Router>
     </ThemeProvider>
   );
