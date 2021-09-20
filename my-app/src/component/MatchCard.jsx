@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   container: {
     margin: "0 10px 10px 10px",
-    padding: "10px",
+    padding: "20px 10px",
     borderRadius: "10px",
     boxShadow: "0 5px 10px 2px #cccccc",
   },
@@ -32,17 +32,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "2px 8px 0 8px",
     fontFamily: "Stylish, sans-serif",
     fontSize: "20px",
+    textAlign:"center",
+    padding:"5px"
   },
   teamName: {
     fontFamily: "Roboto Condensed, sans-serif",
-    fontSize: "20px",
+    fontSize: "18px",
+    textAlign:"center",
+    padding:"10px",
+    marginTop:"5px"
   },
   link: {
     textAlign: "center",
     fontFamily: "Oxygen, sans-serif",
     fontWeight: "bold",
     fontSize: "18px",
-    margin: "8px 0",
+    margin: "8px",
+    backgroundColor:"navy",
+    color:"white",
+    padding:"8px 0",
+    borderRadius:"8px",
+    border:"none",
+    boxShadow:"0 4px 6px 1px gray",
+    cursor:"pointer"
   },
 }));
 

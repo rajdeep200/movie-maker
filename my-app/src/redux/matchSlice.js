@@ -20,6 +20,7 @@ export const addMatch = createAsyncThunk(
                 "Content-Type":"application/json"
             }
         }
+        // eslint-disable-next-line
         const {data} = await axios.post("http://localhost:5000/games",match, config)
     }
 )
